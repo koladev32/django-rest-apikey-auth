@@ -132,5 +132,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 SIMPLE_API_KEY = {
     "FERNET_SECRET": os.environ.get(
         "FERNET_SECRET", "sVjomf7FFy351xRxDeJWFJAZaE2tG3MTuUv92TLFfOA="
-    )
+    ),
+    "AUTHENTICATION_MODEL": "organization.Organization",
 }
