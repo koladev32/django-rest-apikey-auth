@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from organization.models import Organization
+from payments.models import Payment
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -9,5 +10,5 @@ class PaymentSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        model = Organization
+        model = Payment
         fields = "__all__"
