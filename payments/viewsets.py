@@ -8,9 +8,12 @@ from payments.serializers import PaymentSerializer
 
 class PaymentViewSet(viewsets.ModelViewSet):
     http_method_names = ["get", "post"]
-    queryset = Payment.objects.all()
     authentication_classes = (OrganizationAPIKeyAuthentication,)
     permission_classes = (IsActiveEntity,)
     serializer_class = PaymentSerializer
 
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Payment.objects.all()
 
+        return Payment.objects.filter(organization=self.request.user)
