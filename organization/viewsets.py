@@ -16,7 +16,7 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     def create_api_key(self, request, *args, **kwargs):
         organization = self.get_object()
         _, key = OrganizationAPIKey.objects.create_api_key(
-            name="Org Api Key", organization=organization
+            name="Org Api Key", entity=organization
         )
 
         return Response({"key": key}, status=status.HTTP_201_CREATED)
