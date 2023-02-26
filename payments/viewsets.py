@@ -13,7 +13,4 @@ class PaymentViewSet(viewsets.ModelViewSet):
     serializer_class = PaymentSerializer
 
     def get_queryset(self):
-        if self.request.user.is_superuser:
-            return Payment.objects.all()
-
         return Payment.objects.filter(organization=self.request.user)
